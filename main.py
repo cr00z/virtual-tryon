@@ -23,7 +23,7 @@ from dress import get_garment_mesh
 # configure path to input video file
 input_path = './sample_data/single_totalbody.mp4'
 output_path = './output'
-stop_frame = 10  # None
+stop_frame = None
 
 
 if __name__ == '__main__':
