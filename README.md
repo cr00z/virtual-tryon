@@ -4,7 +4,31 @@
 
 Выполнен как финальный проект на [первом семестре продвинутого потока](https://stepik.org/course/101721/info) курса "Deep Learning" [Школы глубокого обучения](http://dlschool.org/) ФПМИ МФТИ.
 
-## Установка
+## Описание
+
+<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo.jpg" width="369" height="648" />
+
+### Основная часть (пайплайн):
+
+- берется готовый меш одежды
+- на вход приходит видео человека в полный рост (перед зеркалом/снятого от 3-го лица)
+- предсказывается 3D-поза человека по этому видео (покадрово)
+- далее на каждом кадре видео:
+- поза конвертируется в нужный формат для перепозирования 3D модели одежды 
+- перепозированный меш одежды рендерится (отрисовывается) поверх картинки
+
+### Задача:
+
+1) Изучить рекомендованный материал.
+2) Скачать и настроить датасет с 3D-одеждой (лучше оба), которая позволяет менять свою позу.
+3) Придумать решение проблемы адаптации формы одежды под конкретное тело человека.
+4) Запустить и добиться корректности работы хотя бы 1-го метода предсказания 3D позы человека по видео.
+5) Реализовать конвертацию формата 3D позы человека в 3D позу меша одежды.
+6) Реализовать рендеринг (отрисовку) 3D модели одежды поверх видео.
+
+## Установка (Colab)
+
+Для установки и запуска демо можно использовать файл demo.ipynb. Загрузите его на Colab и выполните.
 
 1. Clone repository
 ```
@@ -24,15 +48,17 @@
 4. Install pytorch3d (for rendering)
 
 *I ran on version 0.6.1, the old version 0.3.0 is installed on the colab by default, so we install from github*
+
+Achtung! May take up to 10 minutes, please wait! 
 ```
 pip install "git+https://github.com/facebookresearch/pytorch3d.git"
 ```
-6. Install [Mesh](https://github.com/MPI-IS/mesh)
+5. Install [Mesh](https://github.com/MPI-IS/mesh)
 ```
 !sudo apt-get install libboost-dev
 !pip install 'git+https://github.com/MPI-IS/mesh.git'
 ```
-7. Download extra data
+6. Download extra data
 
 Download the neutral SMPL model from http://smplify.is.tue.mpg.de/ and place it in the assets folder.
 ```
@@ -60,30 +86,13 @@ Download the neutral SMPL model from http://smplify.is.tue.mpg.de/ and place it 
 ```
 input_path = './sample_data/single_totalbody.mp4'
 ```
+Run it:
+```
+!python main.py
+```
+Выходной файл output/out.mp4 ([смотрите пример здесь](https://github.com/cr00z/virtual-tryon/blob/master/output/out.mp4))
 
-## Описание
-
-<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo.jpg" width="369" height="648" />
-
-### Основная часть (пайплайн):
-
-- берется готовый меш одежды
-- на вход приходит видео человека в полный рост (перед зеркалом/снятого от 3-го лица)
-- предсказывается 3D-поза человека по этому видео (покадрово)
-- далее на каждом кадре видео:
-- поза конвертируется в нужный формат для перепозирования 3D модели одежды 
-- перепозированный меш одежды рендерится (отрисовывается) поверх картинки
-
-### Задача:
-
-1) Изучить рекомендованный материал.
-2) Скачать и настроить датасет с 3D-одеждой (лучше оба), которая позволяет менять свою позу.
-3) Придумать решение проблемы адаптации формы одежды под конкретное тело человека.
-4) Запустить и добиться корректности работы хотя бы 1-го метода предсказания 3D позы человека по видео.
-5) Реализовать конвертацию формата 3D позы человека в 3D позу меша одежды.
-6) Реализовать рендеринг (отрисовку) 3D модели одежды поверх видео.
-
-### Полезные ссылки:
+## Полезные ссылки:
 
 1. Статьи на русском про 3DML:
    * https://m.habr.com/ru/company/itmai/blog/503358/
