@@ -4,6 +4,8 @@
 
 Выполнен как финальный проект на [первом семестре продвинутого потока](https://stepik.org/course/101721/info) курса "Deep Learning" [Школы глубокого обучения](http://dlschool.org/) ФПМИ МФТИ.
 
+<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo.jpg" width="369" height="648" />
+
 ## Установка
 
 ```
