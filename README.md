@@ -4,23 +4,66 @@
 
 Выполнен как финальный проект на [первом семестре продвинутого потока](https://stepik.org/course/101721/info) курса "Deep Learning" [Школы глубокого обучения](http://dlschool.org/) ФПМИ МФТИ.
 
-<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo.jpg" width="369" height="648" />
-
 ## Установка
 
+1. Clone repository
 ```
-pip install 'git+https://github.com/facebookresearch/detectron2.git'
+!git clone https://github.com/cr00z/virtual-tryon
+!cp -r virtual-tryon/* .
+```
+2. Install detectron2 (for bbox detection)
+```
+!pip install 'git+https://github.com/facebookresearch/detectron2.git'
+```
+3. Install opendr
+```
+!sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+!sudo apt-get install libosmesa6-dev
+!pip install opendr
+```
+4. Install pytorch3d (for rendering)
+
+*I ran on version 0.6.1, the old version 0.3.0 is installed on the colab by default, so we install from github*
+```
+pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+```
+6. Install [Mesh](https://github.com/MPI-IS/mesh)
+```
+!sudo apt-get install libboost-dev
+!pip install 'git+https://github.com/MPI-IS/mesh.git'
+```
+7. Download extra data
+
+Download the neutral SMPL model from http://smplify.is.tue.mpg.de/ and place it in the assets folder.
+```
+!echo "Download the neutral SMPL model"
+!wget https://github.com/classner/up/raw/master/models/3D/basicModel_neutral_lbs_10_207_0_v1.0.0.pkl -P assets
+
+!echo "Downloading extra data from SPIN"
+!wget http://visiondata.cis.upenn.edu/spin/data.tar.gz && tar -xvf data.tar.gz && rm data.tar.gz && mv data/smpl_mean_params.npz assets && rm -rf data
+
+!echo "Downloading pretrained model"
+!wget https://dl.fbaipublicfiles.com/eft/2020_05_31-00_50_43-best-51.749683916568756.pt -P assets
+
+!echo "Download garment fts from MultiGarmentNetwork"
+!wget https://github.com/bharat-b7/MultiGarmentNetwork/raw/master/assets/garment_fts.pkl -P assets
+```
+7. Download Multi-Garment dataset
+```
+!wget https://datasets.d2.mpi-inf.mpg.de/MultiGarmentNetwork/Multi-Garmentdataset.zip
+!unzip Multi-Garmentdataset.zip
 ```
 
-### Запуск
+## Запуск
 
 В файле main.py отредактировать путь к входному видеофайлу, я использовал демо из frankmocap:
 ```
 input_path = './sample_data/single_totalbody.mp4'
 ```
 
-
 ## Описание
+
+<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo.jpg" width="369" height="648" />
 
 ### Основная часть (пайплайн):
 
