@@ -51,7 +51,7 @@ def get_garment_mesh(betas=np.zeros(10), pose=np.zeros(72)):
     offsets = np.zeros_like(smpl_tgt.r)
     offsets[vert_inds] = tgt_garment - smpl_tgt.r[vert_inds]
     smpl_tgt.v_personal[:] = offsets
-    smpl_tgt.pose[:] = pose
+    smpl_tgt.pose[:] = pose.cpu()
     garment_ret_posed = Mesh(smpl_tgt.r, smpl_tgt.f).keep_vertices(vert_inds)
 
     # texture
