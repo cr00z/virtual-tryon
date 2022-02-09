@@ -113,7 +113,7 @@ class Visualizer:
             verts=[verts],
             faces=[faces],
             textures=textures
-        )
+        ).to(self.device)
 
         rend_img = self.renderer(mesh)[0].cpu().numpy()
 
