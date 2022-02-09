@@ -11,13 +11,12 @@ from lib.ch_smpl import Smpl
 from os.path import join
 
 
-path = './Multi-Garment_dataset/125611504306885'
-garment_type = 'TShirtNoCoat'
-
-
-def get_garment_mesh(betas=np.zeros(10), pose=np.zeros(72)):
+def get_garment_mesh(
+        garment_path, garment_type, betas=np.zeros(10), pose=np.zeros(72)):
     """
     Get garment mesh with SMPL parameters
+    :param garment_path: path to garment dir in Multi-Garment dataset
+    :param garment_type: Pants, TShirtNoCoat, etc...
     :param betas: SMPL beta
     :param pose: SMPL pose (pheta)
     :return:
@@ -29,13 +28,15 @@ def get_garment_mesh(betas=np.zeros(10), pose=np.zeros(72)):
     smpl_tgt.betas[:] = betas.cpu()
 
     # smpl model in t-pose with garment beta
-    dat = pkl.load(open(join(path, 'registration.pkl'), 'rb'), encoding='latin1')
+    dat = pkl.load(
+        open(join(garment_path, 'registration.pkl'), 'rb'), encoding='latin1'
+    )
     smpl_src = Smpl(get_hres_smpl_model_data())
     smpl_src.betas[:] = dat['betas']
     body_src = Mesh(smpl_src.v, smpl_src.f)
 
     # garment in t-pose with beta
-    garment = Mesh(filename=join(path, garment_type + '.obj'))
+    garment = Mesh(filename=join(garment_path, garment_type + '.obj'))
 
     # this file contains correspondances between garment vertices and smpl body
     fts_file = 'assets/garment_fts.pkl'
@@ -56,7 +57,7 @@ def get_garment_mesh(betas=np.zeros(10), pose=np.zeros(72)):
 
     # texture
     garment_ret_posed.vt, garment_ret_posed.ft = garment.vt, garment.ft
-    garment_texture = join(path, 'multi_tex.jpg')
+    garment_texture = join(garment_path, 'multi_tex.jpg')
     garment_ret_posed.set_texture_image(garment_texture)
     # smpl_tgt_mesh = Mesh(smpl_tgt.r, smpl_tgt.f)
     return garment_ret_posed
@@ -65,6 +66,6 @@ def get_garment_mesh(betas=np.zeros(10), pose=np.zeros(72)):
 if __name__ == '__main__':
     betas = (np.random.rand(10) - 0.5) * 2.5
     pose = np.random.rand(72) - 0.5
-    garment_ret_posed = get_garment_mesh(betas, pose)
+    garment_ret_posed = get_garment_mesh(11, 11, betas, pose)
     mvs = MeshViewers((1, 1))
     mvs[0][0].set_static_meshes([garment_ret_posed])

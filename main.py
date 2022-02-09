@@ -21,10 +21,15 @@ from dress import get_garment_mesh
 
 
 # configure path to input video file
-input_path = './sample_data/single_totalbody.mp4'
+input_path = './sample_data/my_sample.mp4'
+# input_path = './sample_data/single_totalbody.mp4'
 output_path = './output'
-stop_frame = None
+stop_frame = None # 10
 verbose = False
+garment_path = './Multi-Garment_dataset/125611504306885'
+# garment_path = './Multi-Garment_dataset/125611487366942'
+garment_type = 'Pants'
+# garment_type = 'TShirtNoCoat'
 
 
 if __name__ == '__main__':
@@ -68,7 +73,8 @@ if __name__ == '__main__':
         # betas = (np.random.rand(10) - 0.5) * 2.5
         # pose = np.random.rand(72) - 0.5
 
-        garment_ret_posed = get_garment_mesh(pred_betas, pred_pose)
+        garment_ret_posed = get_garment_mesh(
+            garment_path, garment_type, pred_betas, pred_pose)
 
         if verbose:
             print('Convert to image')
@@ -91,10 +97,10 @@ if __name__ == '__main__':
 
         write_image(output_path, current_frame, res_image)
 
-        # import matplotlib.pyplot as plt
-        # plt.figure(figsize=(10, 5))
-        # plt.imshow(res_image[:, :, ::-1])
-        # plt.show()
+        import matplotlib.pyplot as plt
+        plt.figure(figsize=(10, 5))
+        plt.imshow(res_image[:, :, ::-1])
+        plt.show()
 
     print('Generating video in out.mp4')
     generate_video(output_path)
