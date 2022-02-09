@@ -36,7 +36,7 @@ class Predictor:
     def get_max_body_bbox(self):
         """ Sort the person bbox using size and get max """
         person_idxs = self.outputs['instances'].pred_classes == person_class
-        person_bboxes = self.outputs['instances'][person_idxs].pred_boxes.tensor
+        person_bboxes = self.outputs['instances'][person_idxs].pred_boxes.tensor.cpu()
         bboxes_size = [(c[2] - c[0]) * (c[3] - c[1]) for c in person_bboxes]
         max_body_bbox = person_bboxes[np.argmax(bboxes_size)]
 
