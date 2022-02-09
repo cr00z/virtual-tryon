@@ -23,7 +23,8 @@ from dress import get_garment_mesh
 # configure path to input video file
 input_path = './sample_data/single_totalbody.mp4'
 output_path = './output'
-stop_frame = None
+stop_frame = 20 #None
+verbose = False
 
 
 if __name__ == '__main__':
@@ -42,8 +43,9 @@ if __name__ == '__main__':
         if current_frame == stop_frame or img_original_bgr is None:
             break
 
-        print(f'Frame {current_frame}')
-        print('Predict')
+        if verbose:
+            print(f'Frame {current_frame}')
+            print('Predict')
 
         # supress internal warning for clean up output
         with warnings.catch_warnings():
@@ -55,10 +57,12 @@ if __name__ == '__main__':
             img_original_bgr, max_body_bbox
         )
 
-        print('Regress')
+        if verbose:
+            print('Regress')
         pred_betas, pred_pose, pred_camera = regressor.regress(norm_img)
 
-        print('Get garment mesh')
+        if verbose:
+            print('Get garment mesh')
 
         # for random pose and beta testing, use the options below:
         # betas = (np.random.rand(10) - 0.5) * 2.5
@@ -66,7 +70,8 @@ if __name__ == '__main__':
 
         garment_ret_posed = get_garment_mesh(pred_betas, pred_pose)
 
-        print('Convert to image')
+        if verbose:
+            print('Convert to image')
         pred_camera = pred_camera.cpu().numpy().ravel()
         cam_scale = pred_camera[0]
         cam_trans = pred_camera[1:]
@@ -78,7 +83,8 @@ if __name__ == '__main__':
         )
         garment_ret_posed.v = pred_vertices_img
 
-        print('Visualize')
+        if verbose:
+            print('Visualize')
         res_image = visualizer.visualize(
             img_original_bgr, max_body_bbox, garment_ret_posed
         )
