@@ -6,7 +6,7 @@
 
 ## Описание
 
-<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo1.jpg" width="288" height="512" />
+<img align="right" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo1.jpg" width="225" height="400" />
 
 ### Основная часть (пайплайн):
 
@@ -17,7 +17,7 @@
 - поза конвертируется в нужный формат для перепозирования 3D модели одежды 
 - перепозированный меш одежды рендерится (отрисовывается) поверх картинки
 
-<img align="left" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo2.jpg" width="288" height="512" />
+<img align="left" alt="demo" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo2.jpg" width="225" height="400" />
 
 ### Задача:
 
