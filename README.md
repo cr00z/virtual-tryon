@@ -41,21 +41,22 @@
 ```
 3. Install opendr
 ```
-!sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
-!sudo apt-get install libosmesa6-dev
+!sudo apt-get --yes install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+!sudo apt-get --yes install libosmesa6-dev
 !pip install opendr
 ```
 4. Install pytorch3d (for rendering)
 
 *I ran on version 0.6.1, the old version 0.3.0 is installed on the colab by default, so we install from github*
 
-Achtung! May take up to 10 minutes, please wait! 
+Achtung! May take up to 10-20 minutes, please wait! 
 ```
-pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+%%time
+pip -v install "git+https://github.com/facebookresearch/pytorch3d.git"
 ```
 5. Install [Mesh](https://github.com/MPI-IS/mesh)
 ```
-!sudo apt-get install libboost-dev
+!sudo apt-get --yes install libboost-dev
 !pip install 'git+https://github.com/MPI-IS/mesh.git'
 ```
 6. Download extra data
@@ -91,7 +92,10 @@ Run it:
 !python main.py
 ```
 Выходной файл output/out.mp4 ([смотрите пример здесь](https://github.com/cr00z/virtual-tryon/blob/master/output/out.mp4))
-
+```
+from IPython.display import FileLink
+FileLink(r'output/out.mp4')
+```
 ## Полезные ссылки:
 
 1. Статьи на русском про 3DML:
