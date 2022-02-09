@@ -24,9 +24,9 @@ def get_garment_mesh(betas=np.zeros(10), pose=np.zeros(72)):
     """
     # smpl model in t-pose with beta
     smpl_tgt = Smpl(get_hres_smpl_model_data())
-    print(smpl_tgt.betas)
-    print(betas.device)
-    smpl_tgt.betas[:] = betas
+    #print(smpl_tgt.betas)
+    #print(betas.device)
+    smpl_tgt.betas[:] = betas.cpu()
 
     # smpl model in t-pose with garment beta
     dat = pkl.load(open(join(path, 'registration.pkl'), 'rb'), encoding='latin1')
