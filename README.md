@@ -93,11 +93,17 @@ Run it:
 ```
 !python main.py
 ```
-Выходной файл output/out.mp4 ([смотрите пример здесь](https://github.com/cr00z/virtual-tryon/blob/master/output/out.mp4))
+Выходной файл output/out.mp4
 ```
 from IPython.display import FileLink
 FileLink(r'output/out.mp4')
 ```
+
+## Пример вывода
+
+* [Майка](https://github.com/cr00z/virtual-tryon/blob/master/output/out1.mp4)
+* [Штаны](https://github.com/cr00z/virtual-tryon/blob/master/output/out2.mp4)
+
 ## Полезные ссылки:
 
 1. Статьи на русском про 3DML:
