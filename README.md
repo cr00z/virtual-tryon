@@ -15,8 +15,8 @@
 - на вход приходит видео человека в полный рост (перед зеркалом/снятого от 3-го лица)
 - предсказывается 3D-поза человека по этому видео (покадрово)
 - далее на каждом кадре видео:
-- поза конвертируется в нужный формат для перепозирования 3D модели одежды 
-- перепозированный меш одежды рендерится (отрисовывается) поверх картинки
+  - поза конвертируется в нужный формат для перепозирования 3D модели одежды 
+  - перепозированный меш одежды рендерится (отрисовывается) поверх картинки
 
 
 ### Задача:
@@ -85,7 +85,7 @@ Download the neutral SMPL model from http://smplify.is.tue.mpg.de/ and place it 
 
 ## Запуск
 
-В файле main.py отредактировать путь к входному видеофайлу, я использовал демо из frankmocap:
+В файле main.py отредактировать путь к входному видеофайлу:
 ```
 input_path = './sample_data/single_totalbody.mp4'
 ```
@@ -93,7 +93,7 @@ Run it:
 ```
 !python main.py
 ```
-Выходной файл output/out.mp4
+Как забрать выходной файл output/out.mp4 через блокнот:
 ```
 from IPython.display import FileLink
 FileLink(r'output/out.mp4')
@@ -101,8 +101,8 @@ FileLink(r'output/out.mp4')
 
 ## Пример вывода
 
-* [Майка](https://github.com/cr00z/virtual-tryon/blob/master/output/out1.mp4)
 * [Штаны](https://github.com/cr00z/virtual-tryon/blob/master/output/out2.mp4)
+* [Майка](https://github.com/cr00z/virtual-tryon/blob/master/output/out1.mp4)
 
 ## Полезные ссылки:
 
