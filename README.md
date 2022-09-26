@@ -4,6 +4,11 @@
 
 Выполнен как финальный проект на [первом семестре продвинутого потока](https://stepik.org/course/101721/info) курса "Deep Learning" [Школы глубокого обучения](http://dlschool.org/) ФПМИ МФТИ.
 
+## Output
+
+* [Штаны](https://github.com/cr00z/virtual-tryon/blob/master/output/out2.mp4)
+* [Майка](https://github.com/cr00z/virtual-tryon/blob/master/output/out1.mp4)
+
 ## Описание
 
 <img align="right" alt="demo2" src="https://raw.githubusercontent.com/cr00z/virtual-tryon/master/output/demo2.jpg" width="144" height="256"  border="1" hspace="5"/>
@@ -98,11 +103,6 @@ Run it:
 from IPython.display import FileLink
 FileLink(r'output/out.mp4')
 ```
-
-## Пример вывода
-
-* [Штаны](https://github.com/cr00z/virtual-tryon/blob/master/output/out2.mp4)
-* [Майка](https://github.com/cr00z/virtual-tryon/blob/master/output/out1.mp4)
 
 ## Полезные ссылки:
 
